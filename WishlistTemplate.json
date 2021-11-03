@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Name of the wished item",
+        "desc": "Description of the wished item",
+        "link": "Optional link to the wished item, format: *://*.*/**"
+    },
+    {
+        "name": "Name of the wished item",
+        "desc": "Description of the wished item",
+        "link": "Optional link to the wished item, format: *://*.*/**"
+    },
+    {
+        "name": "Name of the wished item",
+        "desc": "Description of the wished item",
+        "link": "Optional link to the wished item, format: *://*.*/**"
+    }
+]
