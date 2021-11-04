@@ -6,7 +6,14 @@ export default async function handler(req, res) {
     const pathToList = '/json/lists/' + list.join('/')
     const urlToList = process.env.BASE_URL + pathToList
     if(pathToList.endsWith('.json')==false){
-        res.status(400).json({ error: 'Error: Please put .json after filename', status: 400 , providedPath: list.join('/'), providedFullPath: pathToList, possibleTruePath: `${list.join('/')}.json`, possibleTrueFullPath: `${pathToList}.json` })
+        res.status(400).json({
+            error: 'Error: Please put .json after filename',
+            status: 400 ,
+            providedPath: list.join('/'),
+            providedFullPath: pathToList,
+            possibleTruePath: `${list.join('/')}.json`,
+            possibleTrueFullPath: `${pathToList}.json`
+        })
     } else {
         try {
             const response = await fetch(urlToList);
