@@ -1,4 +1,3 @@
-const jsonfile = require('jsonfile');
 const no = require('../../../data/json/lists.json')
 var fs = require('graceful-fs')
 
