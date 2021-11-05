@@ -1,0 +1,48 @@
+{
+    "lists": [
+        {
+            "info": {
+                "name": "test.list"
+            },
+            "list": [
+                {
+                    "name": "2Name of the wished item",
+                    "desc": "2Description of the wished item",
+                    "link": "2Optional link to the wished item, format: *://*.*/**"
+                },
+                {
+                    "name": "2Name of the wished item",
+                    "desc": "2Description of the wished item",
+                    "link": "2Optional link to the wished item, format: *://*.*/**"
+                },
+                {
+                    "name": "2Name of the wished item",
+                    "desc": "2Description of the wished item",
+                    "link": "2Optional link to the wished item, format: *://*.*/**"
+                }
+            ]
+        },
+        {
+            "info": {
+                "name": "test/test.list"
+            },
+            "list": [
+                {
+                    "name": "22Name of the wished item",
+                    "desc": "22Description of the wished item",
+                    "link": "22Optional link to the wished item, format: *://*.*/**"
+                },
+                {
+                    "name": "22Name of the wished item",
+                    "desc": "22Description of the wished item",
+                    "link": "22Optional link to the wished item, format: *://*.*/**"
+                },
+                {
+                    "name": "22Name of the wished item",
+                    "desc": "22Description of the wished item",
+                    "link": "22Optional link to the wished item, format: *://*.*/**"
+                }
+            ]
+        }
+    ]
+}

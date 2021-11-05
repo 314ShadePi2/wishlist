@@ -1,27 +1,38 @@
-import fetch from 'node-fetch';
+const jsonfile = require('jsonfile');
+const no = require('../../../data/json/lists.json')
+var fs = require('graceful-fs')
 
 
-export default async function handler(req, res) {
+export default function handler(req, res) {
     const { list } = req.query
-    const pathToList = '/json/lists/' + list.join('/')
-    const urlToList = process.env.BASE_URL + pathToList
-    if(pathToList.endsWith('.json')==false){
+    if(list.join('/').endsWith('.list')==false){
         res.status(400).json({
-            error: 'Error: Please put .json after filename',
-            status: 400 ,
+            error: 'Error: Please put .list after filename',
+            status: 400,
             providedPath: list.join('/'),
-            providedFullPath: pathToList,
-            possibleTruePath: `${list.join('/')}.json`,
-            possibleTrueFullPath: `${pathToList}.json`
+            possibleTruePath: `${list.join('/')}.list`
         })
     } else {
-        try {
-            const response = await fetch(urlToList);
-            const data = await response.json();
-            res.status(200).json(data)
-        } catch (error) {
-            res.status(400).json({ error: error })
-        }
-
+        const file = './data/json/lists.json'
+        fs.readFileSync(file, (err, data) => {
+            if(err){
+                const error = 'error: ' + err
+                res.end(error)
+            } else {
+                try {
+                    const jdata = JSON.parse(data)
+                    for(let i = 0; i <= jdata.lists.length; i++){
+                        if(data.lists[i].info.name == list.join('/')){
+                            let listToReturn = data.lists[i]
+                            res.status(200).json(listToReturn)
+                            return 0;
+                        }
+                    }
+                } catch (error) {
+                    const err = 'error: ' + error
+                    res.end(err)
+                }
+            }
+        })    
     }
 }
