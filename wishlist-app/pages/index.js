@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home({ data }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -12,7 +12,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Wishlist app
+          {data}
         </h1>
         <div className='max-w-xs my-2 overflow-hidden rounded shadow-lg'>
           <div className='px-6 py-4'>
@@ -33,8 +33,8 @@ export default function Home() {
 const submitList = async (e) => {
   e.preventDefault();
   const list = e.target.list.value;
-  console.log(`Url To Fetch: http://localhost:3005/api/list/${list}`)
-  const res = await fetch(`http://localhost:3005/api/list/${list}`);
+  console.log(`Url To Fetch: http://localhost:3000/api/list/${list}`)
+  const res = await fetch(`http://localhost:3000/api/list/${list}`);
   const result = await res.json();
   console.log(res)
   console.log(result)
@@ -52,3 +52,8 @@ const submitList = async (e) => {
     })
   }
 };
+
+export async function getServerSideProps(){
+  const data = "Wishlist app"
+  return { props: { data } }
+}
