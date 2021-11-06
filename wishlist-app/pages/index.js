@@ -30,9 +30,9 @@ export default function Home() {
   )
 }
 
-const submitList = async (event) => {
-  event.preventDefault();
-  const list = event.target.list.value;
+const submitList = async (e) => {
+  e.preventDefault();
+  const list = e.target.list.value;
   console.log(`Url To Fetch: http://localhost:3005/api/list/${list}`)
   const res = await fetch(`http://localhost:3005/api/list/${list}`);
   const result = await res.json();
