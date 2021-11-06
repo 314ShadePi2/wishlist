@@ -12,26 +12,31 @@ export default function handler(req, res) {
             possibleTruePath: `${list.join('/')}.list`
         })
     } else {
-        const file = './data/json/lists.json'
-        fs.readFileSync(file, (err, data) => {
-            if(err){
-                const error = 'error: ' + err
-                res.end(error)
-            } else {
-                try {
-                    const jdata = JSON.parse(data)
-                    for(let i = 0; i <= jdata.lists.length; i++){
-                        if(data.lists[i].info.name == list.join('/')){
-                            let listToReturn = data.lists[i]
-                            res.status(200).json(listToReturn)
-                            return 0;
+        try {
+            const file = './data/json/lists.json'
+            fs.readFileSync(file, (err, data) => {
+                if(err){
+                    const error = 'error: ' + err
+                    res.end(error)
+                } else {
+                    try {
+                        const jdata = JSON.parse(data)
+                        for(let i = 0; i <= jdata.lists.length; i++){
+                            if(data.lists[i].info.name == list.join('/')){
+                                let listToReturn = data.lists[i]
+                                res.status(200).json(listToReturn)
+                                return 0;
+                            }
                         }
+                    } catch (error) {
+                        const err = 'error: ' + error
+                        res.end(err)
                     }
-                } catch (error) {
-                    const err = 'error: ' + error
-                    res.end(err)
                 }
-            }
-        })    
+            })    
+        } catch (error) {
+            const err = 'error: ' + error
+            res.end(err)
+        }
     }
 }
