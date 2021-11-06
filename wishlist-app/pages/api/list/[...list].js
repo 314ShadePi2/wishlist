@@ -4,7 +4,7 @@ export default function handler(req, res) {
     const { list } = req.query
     if(list.join('/').endsWith('.list')==false){
         res.status(400).json({
-            error: 'Error: Please put .list after filename',
+            error: 'Error: Filename should end with \'.list\'',
             status: 400,
             providedPath: list.join('/'),
             possibleTruePath: `${list.join('/')}.list`

@@ -8,12 +8,11 @@
                 {
                     "name": "2Name of the wished item",
                     "desc": "2Description of the wished item",
-                    "link": "2Optional link to the wished item, format: *://*.*/**"
+                    "link": "https://test.com/2Optional link to the wished item, format: *://*.*/**"
                 },
                 {
                     "name": "2Name of the wished item",
-                    "desc": "2Description of the wished item",
-                    "link": "2Optional link to the wished item, format: *://*.*/**"
+                    "desc": "2Description of the wished item"
                 },
                 {
                     "name": "2Name of the wished item",
