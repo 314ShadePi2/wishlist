@@ -39,7 +39,7 @@ const submitList = async (e) => {
   console.log(res)
   console.log(result)
   if(result.error){
-    document.getElementById("ListGoesHere").innerHTML = `<p id=\"error\">${result.error}</p>`
+    document.getElementById("ListGoesHere").innerHTML = `<p id=\"error\">${result.error}</p><p>Status: ${result.status}</p><p>Provided Path/List name: ${result.providedPath}</p><p>Possible true Path/List name: ${result.possibleTruePath}`
   } else if(!result.error){
     document.getElementById("ListGoesHere").innerHTML = ""
     result.list.forEach(function(item, index){
