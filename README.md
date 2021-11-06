@@ -1,0 +1,1 @@
+# A Web app in NextJS for creating Wishlists or other lists
