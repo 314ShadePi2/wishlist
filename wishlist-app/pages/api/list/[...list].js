@@ -1,6 +1,4 @@
-const no = require('../../../data/json/lists.json')
-var fs = require('graceful-fs')
-
+const listsJson = require('../../../data/json/lists.json')
 
 export default function handler(req, res) {
     const { list } = req.query
@@ -13,30 +11,19 @@ export default function handler(req, res) {
         })
     } else {
         try {
-            const file = './data/json/lists.json'
-            fs.readFileSync(file, (err, data) => {
-                if(err){
-                    const error = 'error: ' + err
-                    res.end(error)
-                } else {
-                    try {
-                        const jdata = JSON.parse(data)
-                        for(let i = 0; i <= jdata.lists.length; i++){
-                            if(data.lists[i].info.name == list.join('/')){
-                                let listToReturn = data.lists[i]
-                                res.status(200).json(listToReturn)
-                                return 0;
-                            }
-                        }
-                    } catch (error) {
-                        const err = 'error: ' + error
-                        res.end(err)
-                    }
+            const joinedList=list.join('/')
+            console.log(joinedList)
+            listsJson.lists.forEach(function(item){
+                //console.log(item)
+                //console.log("")
+                if(item.info.name==joinedList){
+                    console.log(item)
+                    res.status(200).json(item)
                 }
-            })    
+            })  
         } catch (error) {
             const err = 'error: ' + error
-            res.end(err)
+            res.status(400).end(err)
         }
     }
 }
